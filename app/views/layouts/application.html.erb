@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AuthDemo</title>
+  <title>Berks!!!</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if current_user %>
-    <%= form_tag "/logout", method: :delete do %>
-        <button>Logout</button>
-    <% end %>
-<% else %>
-  <%= link_to "Log In", "/login" %>
-  <%= link_to "Sign Up", "/sign_up" %>
-<% end %>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Berks!!!</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <% if current_user %>
+                    <!-- WHAT?! -->
+                    <li><%= link_to "Log Out", "/logout", method: :delete %></li>
+                <% else %>
+                    <li><%= link_to "Log In", "/login" %></li>
+                    <li><%= link_to "Sign Up", "/sign_up" %></li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
 
-<%= yield %>
+    <div class="container">
+        <%= yield %>
+    </div>
 
 </body>
 </html>
