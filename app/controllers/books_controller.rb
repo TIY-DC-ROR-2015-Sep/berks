@@ -5,10 +5,12 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find params[:id]
+    authorize @book
   end
 
   def destroy
     book = Book.find params[:id]
+    authorize book
     book.destroy
     redirect_to :back
   end
