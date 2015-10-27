@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<% if current_user %>
+    <%= form_tag "/logout", method: :delete do %>
+        <button>Logout</button>
+    <% end %>
+<% else %>
+  <%= link_to "Log In", "/login" %>
+  <%= link_to "Sign Up", "/sign_up" %>
+<% end %>
+
 <%= yield %>
 
 </body>
