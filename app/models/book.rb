@@ -15,4 +15,8 @@ class Book < ActiveRecord::Base
   def due_at
     last_checkout.created_at + 2.weeks
   end
+
+  def overdue?
+    checked_out? && Time.now > due_at
+  end
 end

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post "/sign_up" => "registrations#create"
 
   resources :books do
-    resources :checkouts, only: [:create, :checkin]
+    resources :checkouts, only: [:create] do
+      patch :checkin
+    end
   end
 
   root to: "books#index"

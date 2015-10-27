@@ -13,9 +13,14 @@
                 <td><%= book.title %></td>
                 <td><%= book.author %></td>
                 <td>
-                    <% if book.checked_out? %>
+                    <% if current_user.has? book %>
+                        <% if book.overdue? %>
+                            <strong>This book is overdue!</strong>
+                        <% end %>
+                        <%= link_to "Checkin", book_checkout_checkin_path(book, book.last_checkout), method: :patch, class: "btn btn-primary" %>
+                    <% elsif book.checked_out? %>
                         Checked out to <%= book.last_checkout.user.email %><br>
-                        Due back in <%= time_until_in_words book.due_at %>
+                        Due back in <%= time_ago_in_words book.due_at %>
                     <% else %>
                         <%= link_to "Checkout", book_checkouts_path(book), method: :post, class: "btn btn-primary" %>
                     <% end %>
