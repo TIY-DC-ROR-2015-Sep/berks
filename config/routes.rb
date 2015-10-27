@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get  "/sign_up" => "registrations#new"
   post "/sign_up" => "registrations#create"
 
-  root to: "pages#home"
+  resources :books do
+    resources :checkouts, only: [:create, :checkin]
+  end
+
+  root to: "books#index"
 end
