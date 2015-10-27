@@ -1,0 +1,16 @@
+<%= link_to "Back", books_path %>
+
+<h1><%= @book.title %></h1>
+<h2>By <%= @book.author %></h2>
+
+<% if @book.checked_out? %>
+    <p>Checked out by <%= @book.last_checkout.user.email %><br>
+       Due back in <%= time_ago_in_words @book.due_at %></p>
+<% end %>
+
+<h3>Past Checkouts</h3>
+<ul>
+    <% @book.checkouts.each do |c| %>
+        <li><%= c.user.email %> at <%= c.created_at %></li>
+    <% end %>
+ </ul>
