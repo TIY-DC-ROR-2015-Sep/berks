@@ -16,6 +16,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'pundit'
 
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
+
 
 group :development do
   gem 'pry-rails'
