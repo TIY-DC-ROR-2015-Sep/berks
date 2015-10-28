@@ -1,11 +1,5 @@
-class CheckoutPolicy
-  attr_reader :user, :checkout
-
-  def initialize user, checkout
-    @user, @checkout = user, checkout
-  end
-
+class CheckoutPolicy < ApplicationPolicy
   def checkin?
-    user == checkout.user
+    user == record.user
   end
 end

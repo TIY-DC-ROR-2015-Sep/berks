@@ -1,10 +1,4 @@
-class BookPolicy
-  attr_reader :user, :book
-
-  def initialize user, book
-    @user, @book = user, book
-  end
-
+class BookPolicy < ApplicationPolicy
   def show?
     user.present?
   end
