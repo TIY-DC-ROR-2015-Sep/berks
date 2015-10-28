@@ -3,9 +3,10 @@ class CheckoutsController < ApplicationController
     book = Book.find params[:book_id]
     authorize book, :checkout?
     if book.checked_out?
-      # FIXME: message about the book being checked out
+      flash[:warning] = "This book is already checked out"
     else
       current_user.checkout book
+      flash[:success] = "You checked out #{book.title}. It's due back at #{book.due_at}"
     end
     redirect_to :back
   end
