@@ -29,4 +29,19 @@ class BooksController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @book = Book.find params[:id]
+  end
+
+  def update
+    @book = Book.find params[:id]
+    good_params = params.require(:book).permit(:title, :author, :description)
+    if @book.update(good_params)
+      flash[:success] = "Book updated!"
+      redirect_to @book
+    else
+      render :edit
+    end
+  end
 end
