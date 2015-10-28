@@ -20,7 +20,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    good_params = params.require(:book).permit(:title, :author, :description)
     @book = Book.new(good_params)
     if @book.save
       flash[:success] = "Book added!"
@@ -36,12 +35,17 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find params[:id]
-    good_params = params.require(:book).permit(:title, :author, :description)
     if @book.update(good_params)
       flash[:success] = "Book updated!"
       redirect_to @book
     else
       render :edit
     end
+  end
+
+private
+
+  def good_params
+    params.require(:book).permit(:title, :author, :description)
   end
 end

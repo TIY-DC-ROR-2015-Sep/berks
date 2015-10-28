@@ -1,0 +1,15 @@
+- if @book.errors.any?
+  .alert.alert-dangers
+    = @book.errors.full_messages.to_sentence
+
+= form_for @book do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :author
+  = f.text_field :author
+
+  = f.label :description
+  = f.text_area :description
+
+  = f.submit class: "btn btn-primary"
