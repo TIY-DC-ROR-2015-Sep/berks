@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  rescue_from Pundit::NotAuthorizedError do |e|
+    flash[:danger] = "You are not allowed to #{e.query.sub '?', ''} this #{e.record.class.name}!"
+    redirect_to login_path
+  end
+
   def current_user
     @_current_user ||= User.find_by_id(session[:user_id])
   end
