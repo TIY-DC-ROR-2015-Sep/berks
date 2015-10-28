@@ -3,13 +3,22 @@
     = @book.errors.full_messages.to_sentence
 
 = form_for @book do |f|
-  = f.label :title
-  = f.text_field :title
+  .form-group class=(@book.errors["title"].any? ? "has-error" : "")
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+    - if @book.errors["title"].any?
+      span.help-block= @book.errors["title"].to_sentence
 
-  = f.label :author
-  = f.text_field :author
+  .form-group class=(@book.errors["author"].any? ? "has-error" : "")
+    = f.label :author
+    = f.text_field :author, class: "form-control"
+    - if @book.errors["author"].any?
+      span.help-block= @book.errors["author"].to_sentence
 
-  = f.label :description
-  = f.text_area :description
+  .form-group class=(@book.errors["description"].any? ? "has-error" : "")
+    = f.label :description
+    = f.text_area :description, class: "form-control"
+    - if @book.errors["description"].any?
+      span.help-block= @book.errors["description"].to_sentence
 
   = f.submit class: "btn btn-primary"
