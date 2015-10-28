@@ -3,10 +3,6 @@ class BookPolicy < ApplicationPolicy
     user.present?
   end
 
-  def destroy?
-    user.admin?
-  end
-
   def checkout?
     user.present?
   end
