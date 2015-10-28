@@ -1,0 +1,12 @@
+h1 Add a Book
+
+- if @book.errors.any?
+  .alert.alert-dangers
+    = @book.errors.full_messages.to_sentence
+
+= form_tag books_path do
+  input.form-control(type="text" name="author" placeholder="Author" value=@book.author)
+  input.form-control(type="text" name="title" placeholder="Title" value=@book.title)
+  textarea.form-control(name="description" placeholder="Description")
+    = @book.description
+  button.btn.btn-primary Save
