@@ -4,6 +4,8 @@ class Book < ActiveRecord::Base
   has_many :checkouts, dependent: :destroy
   has_many :borrowers, through: :checkouts, source: :user
 
+  mount_uploader :cover, BookCoverUploader
+
   def last_checkout
     checkouts.order(created_at: :desc).first
   end

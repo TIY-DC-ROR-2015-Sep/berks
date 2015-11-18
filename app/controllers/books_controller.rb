@@ -21,6 +21,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(good_params)
+    @book.cover = params[:book][:cover]
     if @book.save
       flash[:success] = "Book added!"
       redirect_to @book

@@ -1,5 +1,10 @@
 <%= link_to "Back", books_path %>
 
+<% if @book.cover %>
+    <img src="<%= @book.cover.url %>">
+<% end %>
+
+
 <h1><%= @book.title %></h1>
 <h2>By <%= @book.author %></h2>
 

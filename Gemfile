@@ -19,6 +19,7 @@ gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
 
+gem 'carrierwave'
 
 group :development do
   gem 'pry-rails'
