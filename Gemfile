@@ -19,7 +19,9 @@ gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
 
-gem 'carrierwave'
+gem 'fog'
+gem 'fog-aws'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 group :development do
   gem 'pry-rails'

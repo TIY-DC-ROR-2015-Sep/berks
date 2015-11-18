@@ -1,7 +1,9 @@
 <%= link_to "Back", books_path %>
 
 <% if @book.cover %>
-    <img src="<%= @book.cover.url %>">
+    <%# Localhost isn't https://, so the browser may complain about mixing %>
+    <%# The right fix is to enable SSL %>
+    <img src="<%= @book.cover.url.sub('https://', 'http://') %>">
 <% end %>
 
 
